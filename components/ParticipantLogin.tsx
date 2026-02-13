@@ -68,7 +68,7 @@ export const ParticipantLogin: React.FC<ParticipantLoginProps> = ({ participants
         </form>
 
         <div className="pt-4 border-t border-amber-50">
-          <p className="text-[10px] text-center text-amber-500 font-bold uppercase tracking-widest">
+          <p className="text-[11px] text-center text-amber-700 font-bold uppercase tracking-widest">
             Secure Entry for ClayMaster Participants Only
           </p>
         </div>

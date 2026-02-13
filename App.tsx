@@ -180,26 +180,26 @@ const App: React.FC = () => {
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 cursor-pointer" onClick={() => { setRole(UserRole.NONE); setCurrentView('HOME'); }}>
-              <div className="w-10 h-10 bg-amber-900 rounded-2xl flex items-center justify-center text-white text-2xl font-black shadow-lg hover:rotate-6 transition-transform">C</div>
-              <h1 className="text-xl font-black text-amber-900 hidden sm:block">ClayMaster</h1>
+              <div className="w-10 h-10 bg-amber-900 rounded-2xl flex items-center justify-center text-white text-2xl font-black shadow-lg hover:rotate-6 transition-transform">N</div>
+              <h1 className="text-xl font-black text-amber-900 hidden sm:block">第二屆黏土盃</h1>
             </div>
 
             <nav className="hidden md:flex items-center gap-1">
                <button
                  onClick={() => { setCurrentView('HOME'); setRole(UserRole.NONE); }}
-                 className={`px-4 py-2 text-sm font-black rounded-xl transition-all ${currentView === 'HOME' && role === UserRole.NONE ? 'bg-amber-100 text-amber-900' : 'text-amber-900/40 hover:text-amber-900'}`}
+                 className={`px-4 py-2 text-sm font-black rounded-xl transition-all ${currentView === 'HOME' && role === UserRole.NONE ? 'bg-amber-100 text-amber-900' : 'text-amber-900/60 hover:text-amber-900'}`}
                >
                  首頁
                </button>
                <button
                  onClick={() => { setCurrentView('HIGHLIGHTS'); setRole(UserRole.NONE); }}
-                 className={`px-4 py-2 text-sm font-black rounded-xl transition-all ${currentView === 'HIGHLIGHTS' ? 'bg-amber-100 text-amber-900' : 'text-amber-900/40 hover:text-amber-900'}`}
+                 className={`px-4 py-2 text-sm font-black rounded-xl transition-all ${currentView === 'HIGHLIGHTS' ? 'bg-amber-100 text-amber-900' : 'text-amber-900/60 hover:text-amber-900'}`}
                >
                  賽事回顧
                </button>
                <button
                  onClick={() => { setCurrentView('AWARDS'); setRole(UserRole.NONE); }}
-                 className={`px-4 py-2 text-sm font-black rounded-xl transition-all ${currentView === 'AWARDS' ? 'bg-amber-100 text-amber-900' : 'text-amber-900/40 hover:text-amber-900'}`}
+                 className={`px-4 py-2 text-sm font-black rounded-xl transition-all ${currentView === 'AWARDS' ? 'bg-amber-100 text-amber-900' : 'text-amber-900/60 hover:text-amber-900'}`}
                >
                  頒獎典禮
                </button>
@@ -214,7 +214,7 @@ const App: React.FC = () => {
                    className="bg-amber-900 text-white px-5 py-2.5 rounded-2xl font-black text-sm shadow-md hover:bg-black transition-all active:scale-95 flex items-center gap-2"
                  >
                    登入 / 觀賽
-                   <span className={`text-[10px] transition-transform ${showLoginMenu ? 'rotate-180' : ''}`}>▼</span>
+                   <span className={`text-[11px] transition-transform ${showLoginMenu ? 'rotate-180' : ''}`}>▼</span>
                  </button>
 
                  {showLoginMenu && (
@@ -246,7 +246,7 @@ const App: React.FC = () => {
                     </div>
                   )}
                   {showLogout && (
-                    <button onClick={handleLogout} className="text-xs font-black text-amber-900/40 hover:text-red-600 transition-colors px-2 py-1">登出</button>
+                    <button onClick={handleLogout} className="text-xs font-black text-amber-900/60 hover:text-red-600 transition-colors px-2 py-1">登出</button>
                   )}
                </div>
              )}

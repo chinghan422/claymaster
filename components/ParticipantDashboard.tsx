@@ -61,14 +61,14 @@ export const ParticipantDashboard: React.FC<ParticipantDashboardProps> = ({
         <h2 className="text-2xl font-black text-amber-950">選手工作台</h2>
       </div>
 
-      {/* 圖片上傳區：最多 3 張 */}
+      {/* 題庫照片上傳區：最多 3 張 */}
       <div className="clay-card p-8">
         <div className="flex justify-between items-center mb-8">
           <div>
             <h3 className="font-black text-amber-950 text-lg flex items-center gap-2">
-              <span>📷</span> 我的照片
+              <span>📷</span> 我貢獻的題目
             </h3>
-            <p className="text-[10px] text-amber-400 font-bold uppercase tracking-widest mt-1">My Photos ({myPoolItems.length}/3)</p>
+            <p className="text-[11px] text-amber-600 font-bold uppercase tracking-widest mt-1">My Contributions ({myPoolItems.length}/3)</p>
           </div>
           {myPoolItems.length < 3 && (
             <button
@@ -84,7 +84,7 @@ export const ParticipantDashboard: React.FC<ParticipantDashboardProps> = ({
 
         {myPoolItems.length === 0 ? (
           <div className="border-4 border-dashed border-amber-50 rounded-[32px] p-12 text-center bg-amber-50/10">
-            <p className="text-sm text-amber-400 font-bold mb-6 italic">尚未上傳任何照片...</p>
+            <p className="text-sm text-amber-600 font-bold mb-6">尚未上傳任何題目照片...</p>
             <button
               onClick={() => poolFileRef.current?.click()}
               className="px-8 py-4 bg-white border-2 border-amber-300 text-amber-800 rounded-2xl font-black shadow-lg hover:bg-amber-50 transition-all active:scale-95"
@@ -101,7 +101,7 @@ export const ParticipantDashboard: React.FC<ParticipantDashboardProps> = ({
                     src={item.imageUrl}
                     className="w-full h-full object-contain cursor-pointer transition-transform group-hover:scale-110"
                     alt="my photo"
-                    onClick={() => onImageClick(item.imageUrl, '我的照片預覽')}
+                    onClick={() => onImageClick(item.imageUrl, '我貢獻的題目')}
                   />
                 </div>
                 <button
@@ -113,7 +113,7 @@ export const ParticipantDashboard: React.FC<ParticipantDashboardProps> = ({
               </div>
             ))}
             {[...Array(3 - myPoolItems.length)].map((_, i) => (
-              <div key={i} className="aspect-square border-4 border-dashed border-amber-50 rounded-3xl flex items-center justify-center text-amber-50 text-3xl font-black italic cursor-pointer hover:border-amber-200 hover:text-amber-200 transition-colors"
+              <div key={i} className="aspect-square border-4 border-dashed border-amber-50 rounded-3xl flex items-center justify-center text-amber-50 text-3xl font-black cursor-pointer hover:border-amber-200 hover:text-amber-400 transition-colors"
                    onClick={() => poolFileRef.current?.click()}>
                 +
               </div>
@@ -133,19 +133,19 @@ export const ParticipantDashboard: React.FC<ParticipantDashboardProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-[32px] shadow-inner border border-amber-100 cursor-pointer group transition-all hover:shadow-lg"
                  onClick={() => activeRound.isTopicRevealed && onImageClick(activeRound.topicImage, `當前挑戰題目`)}>
-              <p className="text-[10px] text-amber-400 font-black mb-3 uppercase tracking-[0.3em] text-center">當前回合題目 (點擊放大)</p>
+              <p className="text-[11px] text-amber-600 font-black mb-3 uppercase tracking-[0.3em] text-center">當前回合題目 (點擊放大)</p>
               {activeRound.isTopicRevealed ? (
                 <img src={activeRound.topicImage} className="w-full h-48 object-contain rounded-lg transition-transform group-hover:scale-105" alt="題目" />
               ) : (
-                <div className="w-full h-48 bg-amber-50 animate-pulse rounded-2xl flex flex-col items-center justify-center text-amber-200">
-                  <span className="text-6xl font-black italic">?</span>
-                  <p className="text-[10px] mt-4 font-black">等待揭曉...</p>
+                <div className="w-full h-48 bg-amber-50 animate-pulse rounded-2xl flex flex-col items-center justify-center text-amber-400">
+                  <span className="text-6xl font-black">?</span>
+                  <p className="text-[11px] mt-4 font-black">等待揭曉...</p>
                 </div>
               )}
             </div>
 
             <div className="bg-white p-6 rounded-[32px] shadow-inner border border-emerald-100 flex flex-col justify-center items-center text-center">
-              <p className="text-[10px] text-emerald-500 font-black mb-3 uppercase tracking-[0.3em]">我的參賽作品</p>
+              <p className="text-[11px] text-emerald-500 font-black mb-3 uppercase tracking-[0.3em]">我的參賽作品</p>
               {myCurrentSubmission?.imageUrl ? (
                 <div className="w-full space-y-4">
                   <img
@@ -156,7 +156,7 @@ export const ParticipantDashboard: React.FC<ParticipantDashboardProps> = ({
                   />
                   <button
                     onClick={() => submissionFileRef.current?.click()}
-                    className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100"
+                    className="text-[11px] font-black text-emerald-600 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-100"
                   >
                     重新上傳作品
                   </button>
@@ -179,7 +179,7 @@ export const ParticipantDashboard: React.FC<ParticipantDashboardProps> = ({
             </div>
           </div>
 
-          <p className="text-center text-sm text-amber-800 font-black italic">
+          <p className="text-center text-sm text-amber-800 font-black">
              {activeRound.isTopicRevealed ? "「題目已公開，作品上傳後觀眾即可開始評分！」" : "「管理員正在準備揭曉本次比賽主題...」"}
           </p>
         </div>
