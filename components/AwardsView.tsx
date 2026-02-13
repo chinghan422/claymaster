@@ -24,7 +24,7 @@ export const AwardsView: React.FC<AwardsViewProps> = ({ participants, submission
     return (
       <div className="text-center py-24 space-y-4">
         <div className="text-6xl grayscale opacity-20">👑</div>
-        <h2 className="text-2xl font-black text-amber-900/30 italic">典禮籌備中，期待冠軍誕生</h2>
+        <h2 className="text-2xl font-black text-amber-900/60">典禮籌備中，期待冠軍誕生</h2>
       </div>
     );
   }
@@ -32,7 +32,7 @@ export const AwardsView: React.FC<AwardsViewProps> = ({ participants, submission
   return (
     <div className="space-y-16 animate-in fade-in zoom-in-95 duration-700 py-10">
       <div className="text-center space-y-4">
-        <h2 className="text-5xl font-black text-amber-950 italic drop-shadow-sm">🏆 頒獎榮耀時刻</h2>
+        <h2 className="text-5xl font-black text-amber-950 drop-shadow-sm">🏆 頒獎榮耀時刻</h2>
         <p className="text-lg text-amber-700 font-bold uppercase tracking-widest">Congratulations to all participants!</p>
       </div>
 
@@ -71,14 +71,14 @@ export const AwardsView: React.FC<AwardsViewProps> = ({ participants, submission
             <div className="w-36 h-36 bg-orange-300 rounded-t-3xl flex flex-col items-center justify-center shadow-lg border-x-4 border-orange-200">
                <span className="text-4xl font-black text-orange-100">3</span>
                <p className="mt-4 font-black text-orange-950 text-center px-2 text-sm">{topThree[2].name}</p>
-               <p className="text-[10px] font-bold text-orange-700">{topThree[2].totalScore} pts</p>
+               <p className="text-[11px] font-bold text-orange-700">{topThree[2].totalScore} pts</p>
             </div>
           </div>
         )}
       </div>
 
       <div className="max-w-xl mx-auto space-y-4 pt-10">
-        <h3 className="text-xl font-black text-amber-900 text-center italic">其他傑出創作者</h3>
+        <h3 className="text-xl font-black text-amber-900 text-center">其他傑出創作者</h3>
         <div className="grid grid-cols-2 gap-3">
           {leaderboard.slice(3).map((p) => (
             <div key={p.id} className="bg-white/50 p-3 rounded-2xl flex items-center justify-between border border-amber-100">

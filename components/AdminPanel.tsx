@@ -109,7 +109,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                         <input type="checkbox" checked={selectedParticipants.includes(p.id)} onChange={() => toggleParticipant(p.id)} className="w-5 h-5 accent-emerald-700 rounded"/>
                         <span className="text-sm font-black text-amber-950">{p.name}</span>
                       </label>
-                    )) : <p className="text-center py-10 text-xs text-amber-300 font-bold italic">尚無參賽者，請先至帳號管理建立</p>}
+                    )) : <p className="text-center py-10 text-xs text-amber-500 font-bold">尚無參賽者，請先至帳號管理建立</p>}
                 </div>
               </div>
               <div className="space-y-4 flex flex-col justify-center">
@@ -127,7 +127,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
               {rounds.filter(r => r.status !== 'COMPLETED').length > 0 ? rounds.filter(r => r.status !== 'COMPLETED').map(round => (
                 <div key={round.id} className="p-5 bg-white border-2 border-amber-100 rounded-3xl flex flex-col sm:flex-row justify-between items-center gap-4">
                   <div>
-                    <span className="text-[10px] font-black bg-amber-950 text-white px-2 py-0.5 rounded-full mb-1 inline-block uppercase">ROUND {round.roundNumber}</span>
+                    <span className="text-[11px] font-black bg-amber-950 text-white px-2 py-0.5 rounded-full mb-1 inline-block uppercase">ROUND {round.roundNumber}</span>
                     <p className="text-lg font-black text-amber-950">{round.participantIds.map(id => participants.find(p => p.id === id)?.name || '未知名').join(' vs ')}</p>
                   </div>
                   <div className="flex gap-2">
@@ -138,7 +138,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                     )}
                   </div>
                 </div>
-              )) : <p className="text-center py-10 text-xs text-amber-300 font-bold italic">目前無待處理賽程</p>}
+              )) : <p className="text-center py-10 text-xs text-amber-500 font-bold">目前無待處理賽程</p>}
             </div>
           </div>
         </div>
@@ -162,13 +162,13 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                 <img src={item.imageUrl} className="w-full h-full object-contain" alt="pool item" />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-2 text-center">
                    <p className="text-[8px] text-white font-black mb-2">提供者: {item.contributorId === 'ADMIN' ? '管理員' : (participants.find(p => p.id === item.contributorId)?.name || '未知')}</p>
-                   <button onClick={() => onDeleteFromPool(item.id)} className="bg-red-500 text-white text-[10px] px-2 py-1 rounded font-black">刪除</button>
+                   <button onClick={() => onDeleteFromPool(item.id)} className="bg-red-500 text-white text-[11px] px-2 py-1 rounded font-black">刪除</button>
                 </div>
                 {usedTopicImages.includes(item.imageUrl) && (
                   <div className="absolute top-1 left-1 bg-amber-400 text-[8px] font-black px-1 rounded">已用</div>
                 )}
               </div>
-            )) : <p className="col-span-full text-center py-20 text-xs text-amber-300 font-bold">題庫尚無內容</p>}
+            )) : <p className="col-span-full text-center py-20 text-xs text-amber-500 font-bold">題庫尚無內容</p>}
           </div>
         </div>
       )}
@@ -187,8 +187,8 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                  <div key={a.username} className="bg-amber-50/50 p-3 rounded-2xl flex items-center justify-between border border-amber-100">
                    <span className="font-bold text-amber-950">{a.username}</span>
                    <div className="flex gap-2">
-                     <button onClick={() => { const p = prompt('新密碼', a.password); if (p) onUpdateAdmin(a.username, p); }} className="text-[10px] bg-white border px-3 py-1 rounded-lg font-black text-amber-700">編輯密碼</button>
-                     <button onClick={() => a.username !== 'admin' && window.confirm(`刪除管理員 ${a.username}？`) && onDeleteAdmin(a.username)} className={`text-[10px] px-3 py-1 rounded-lg font-black ${a.username === 'admin' ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-red-50 text-red-600'}`}>刪除</button>
+                     <button onClick={() => { const p = prompt('新密碼', a.password); if (p) onUpdateAdmin(a.username, p); }} className="text-[11px] bg-white border px-3 py-1 rounded-lg font-black text-amber-700">編輯密碼</button>
+                     <button onClick={() => a.username !== 'admin' && window.confirm(`刪除管理員 ${a.username}？`) && onDeleteAdmin(a.username)} className={`text-[11px] px-3 py-1 rounded-lg font-black ${a.username === 'admin' ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-red-50 text-red-600'}`}>刪除</button>
                    </div>
                  </div>
                ))}
@@ -208,15 +208,15 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                      <img src={p.avatar} className="w-10 h-10 rounded-full border border-amber-100" alt="p" />
                      <div>
                        <p className="font-black text-amber-950 text-sm">{p.name}</p>
-                       <p className="text-[9px] text-amber-400 font-bold">ID: {p.id}</p>
+                       <p className="text-[11px] text-amber-600 font-bold">ID: {p.id}</p>
                      </div>
                    </div>
                    <div className="flex gap-2">
-                     <button onClick={() => { const n = prompt('修改姓名', p.name); if (n) onUpdateParticipant(p.id, n); }} className="text-[10px] bg-amber-50 text-amber-700 font-black px-3 py-1 rounded-lg">改名</button>
-                     <button onClick={() => window.confirm(`將永久刪除選手 ${p.name}，確定？`) && onDeleteParticipant(p.id)} className="text-[10px] bg-red-50 text-red-600 font-black px-3 py-1 rounded-lg">刪除</button>
+                     <button onClick={() => { const n = prompt('修改姓名', p.name); if (n) onUpdateParticipant(p.id, n); }} className="text-[11px] bg-amber-50 text-amber-700 font-black px-3 py-1 rounded-lg">改名</button>
+                     <button onClick={() => window.confirm(`將永久刪除選手 ${p.name}，確定？`) && onDeleteParticipant(p.id)} className="text-[11px] bg-red-50 text-red-600 font-black px-3 py-1 rounded-lg">刪除</button>
                    </div>
                  </div>
-               )) : <p className="col-span-full text-center py-10 text-xs text-amber-300 font-bold">尚未新增任何參賽者</p>}
+               )) : <p className="col-span-full text-center py-10 text-xs text-amber-500 font-bold">尚未新增任何參賽者</p>}
              </div>
            </div>
         </div>
