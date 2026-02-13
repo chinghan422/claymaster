@@ -1,12 +1,19 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import db from './db.js';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
+
+// In production, serve the built frontend
+const distPath = path.join(__dirname, '..', 'dist');
+app.use(express.static(distPath));
 
 // ─── Helper: build full state (matches AppState shape) ───
 
@@ -235,6 +242,12 @@ app.post('/api/submissions/:id/rate', (req, res) => {
   db.prepare('INSERT OR REPLACE INTO scores (submissionId, voterNickname, score) VALUES (?, ?, ?)')
     .run(req.params.id, voterNickname, score);
   res.json({ success: true });
+});
+
+// ─── Fallback: serve frontend for all non-API routes ───
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
 });
 
 // ─── Start ───
